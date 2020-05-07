@@ -1,0 +1,6 @@
+* SPICE3 file created from Q1.ext - technology: scmos
+
+.option scale=1u
+
+C0 p gnd! 4.9fF **FLOATING
+C1 n gnd! 5.5fF **FLOATING

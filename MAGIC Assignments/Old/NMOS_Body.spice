@@ -1,0 +1,29 @@
+NMOS Body Potential Variation
+* Guining Pertin - 170102027
+* 04-09-19
+* SPICE3 file created from NMOS_Body.ext - technology: scmos
+
+.MODEL nfet NMOS level=8
+
+.option scale=1u
+
+* Designed NMOS Transistor
+M1000 DRAIN GATE GND BODY nfet w=4 l=3 ad=24 pd=20 as=24 ps=20
+
+* Voltage inputs
+VD DRAIN GND DC 5
+VG GATE GND DC 5
+Vb BODY GND DC 0
+
+.control
+
+op
+print all
+dc VG 0 5 0.1 VB 0 5 1
+plot -VD#branch ylabel 'Id' title 'VB>0' 
+dc VG 0 5 0.1 VB -5 0 1
+plot -VD#branch ylabel 'Id' title 'VB<0' 
+
+.endc
+
+.end

@@ -1,0 +1,49 @@
+timestamp 1569760092
+version 8.0
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+node "inter2" 53 0 58 -3 ndiff 18 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "inter3" 53 0 34 -3 ndiff 18 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "inter1" 53 0 10 -3 ndiff 18 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "GND" 1346 28300 -13 -24 ppc 95 90 64 64 0 0 0 0 0 0 0 0 696 386 212 122 0 0
+node "B_BAR" 380 4667 64 -5 p 19 18 19 18 52 50 0 0 0 0 0 0 102 66 0 0 0 0
+node "a_42_10#" 99 0 42 10 pdiff 0 0 19 18 0 0 0 0 0 0 0 0 16 16 0 0 0 0
+node "N2" 661 4667 40 -5 p 19 18 38 36 52 50 0 0 0 0 0 0 238 156 0 0 0 0
+node "OUT" 144 1726 27 10 pdc 19 18 19 18 0 0 0 0 0 0 0 0 159 114 140 94 0 0
+node "B" 539 23528 13 3 pc 0 0 0 0 106 102 0 0 0 0 0 0 418 276 0 0 0 0
+node "N1" 661 4667 3 10 pdc 19 18 38 36 52 50 0 0 0 0 0 0 238 156 0 0 0 0
+node "A_BAR" 380 4667 -6 -3 ndiff 19 18 19 18 52 50 0 0 0 0 0 0 102 66 0 0 0 0
+node "A" 526 14685 -11 3 pc 0 0 0 0 104 100 0 0 0 0 0 0 168 114 296 202 0 0
+node "VDD" 10700 0 -14 6 nw 64 64 104 96 0 0 0 0 0 0 0 0 374 234 480 248 2856 260
+cap "A" "inter2" 423
+cap "N2" "OUT" 540
+cap "A" "GND" 540
+cap "B" "GND" 1080
+cap "inter1" "B" 423
+cap "a_42_10#" "OUT" 720
+cap "VDD" "OUT" 5904
+cap "A" "B" 4455
+cap "VDD" "N2" 9291
+cap "N1" "VDD" 9291
+cap "VDD" "A_BAR" 3111
+cap "A" "VDD" 4671
+cap "B" "VDD" 4909
+cap "B_BAR" "VDD" 3111
+device mosfet nfet 80 -3 81 -2 2 3 "Gnd!" "B" 4 0 "B_BAR" 3 0 "GND" 3 0
+device mosfet nfet 64 -3 65 -2 2 3 "Gnd!" "B_BAR" 4 0 "inter2" 3 0 "GND" 3 0
+device mosfet nfet 56 -3 57 -2 2 3 "Gnd!" "A" 4 0 "N2" 3 0 "inter2" 3 0
+device mosfet nfet 40 -3 41 -2 2 3 "Gnd!" "N2" 4 0 "inter3" 3 0 "OUT" 3 0
+device mosfet nfet 32 -3 33 -2 2 3 "Gnd!" "N1" 4 0 "GND" 3 0 "inter3" 3 0
+device mosfet nfet 16 -3 17 -2 2 3 "Gnd!" "B" 4 0 "inter1" 3 0 "N1" 3 0
+device mosfet nfet 8 -3 9 -2 2 3 "Gnd!" "A_BAR" 4 0 "GND" 3 0 "inter1" 3 0
+device mosfet nfet -8 -3 -7 -2 2 3 "Gnd!" "A" 4 0 "GND" 3 0 "A_BAR" 3 0
+device mosfet pfet 80 10 81 11 2 3 "VDD" "B" 4 0 "B_BAR" 3 0 "VDD" 3 0
+device mosfet pfet 64 10 65 11 2 3 "VDD" "B_BAR" 4 0 "VDD" 3 0 "N2" 3 0
+device mosfet pfet 56 10 57 11 2 3 "VDD" "A" 4 0 "N2" 3 0 "VDD" 3 0
+device mosfet pfet 40 10 41 11 2 3 "VDD" "N2" 4 0 "VDD" 3 0 "a_42_10#" 3 0
+device mosfet pfet 32 10 33 11 2 3 "VDD" "N1" 4 0 "OUT" 3 0 "VDD" 3 0
+device mosfet pfet 16 10 17 11 2 3 "VDD" "B" 4 0 "VDD" 3 0 "N1" 3 0
+device mosfet pfet 8 10 9 11 2 3 "VDD" "A_BAR" 4 0 "N1" 3 0 "VDD" 3 0
+device mosfet pfet -8 10 -7 11 2 3 "VDD" "A" 4 0 "VDD" 3 0 "A_BAR" 3 0

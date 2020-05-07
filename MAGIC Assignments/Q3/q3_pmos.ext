@@ -1,0 +1,12 @@
+timestamp 1569736965
+version 8.0
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+node "GND" 99 0 -11 -1 pdc 0 0 19 18 0 0 0 0 0 0 0 0 52 40 0 0 0 0
+node "GATE" 139 0 -6 -2 p 0 0 0 0 32 32 0 0 0 0 0 0 46 36 0 0 0 0
+node "VDD" 3049 0 -19 -13 nw 16 16 19 18 0 0 0 0 0 0 0 0 74 54 0 0 672 104
+cap "VDD" "GND" 1692
+cap "VDD" "GATE" 4824
+device mosfet pfet -6 0 -5 1 2 3 "VDD" "GATE" 4 0 "GND" 3 0 "VDD" 3 0

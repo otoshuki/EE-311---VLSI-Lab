@@ -1,0 +1,42 @@
+* SPICE3 file created from q4.ext - technology: scmos
+*Question 4 - CMOS Inverter
+*Guining Pertin - 170102027
+
+.MODEL nfet NMOS
+.MODEL pfet PMOS
+.option scale=1u
+
+*MAGIC extractions
+M1000 A_BAR A VDD VDD pfet w=3 l=2 ad=19 pd=18 as=19 ps=18
+M1001 A_BAR A GND GND nfet w=3 l=2 ad=19 pd=18 as=19 ps=18
+
+*Voltage Sources
+VD VDD GND DC 5
+
+*Pulse input - delay-width=1s, rise-fall=0.5s
+VA A GND DC 0 AC 0 PULSE(0 5 1 0.2 0.2 1 4)
+
+*Load Capacitor
+CL A_BAR GND 0.1u
+
+.CONTROL
+
+TRAN 10m 4
+
+*Measure Fall and Rise Time
+MEAS tran tf trig A_BAR val=4.5 fall=1 targ A_BAR val=0.5 fall=1
+MEAS tran tr trig A_BAR val=0.5 rise=1 targ A_BAR val=4.5 rise=1
+
+*Measure Propagation Delay with and without CL
+MEAS tran tphl trig A val=2.5 rise=1 targ A_BAR val=2.5 fall=1
+MEAS tran tplh trig A val=2.5 fall=1 targ A_BAR val=2.5 rise=1
+
+*PLOT A_BAR A ylabel 'Input/Output'
+
+*VTC
+DC VA 0 5 0.05
+PLOT A_BAR ylabel 'Vout'
+
+.ENDC
+
+.END

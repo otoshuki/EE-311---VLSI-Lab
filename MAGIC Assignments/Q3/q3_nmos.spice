@@ -1,0 +1,23 @@
+* SPICE3 file created from q3_nmos.ext - technology: scmos
+*Question 3 - NMOS
+*Guining Pertin - 170102027
+
+.option scale=1u
+.MODEL nfet NMOS
+
+*MAGIC extractions
+M1000 VDD GATE GND GND nfet w=3 l=2 ad=19 pd=18 as=19 ps=18
+C0 VDD GND 2.3fF
+
+*Voltage Sources
+VDS VDD GND DC 0
+VGS GATE GND DC 0
+
+.CONTROL
+
+DC VDS 0 5 0.1 VGS 0 5 0.5
+PLOT -VDS#branch ylabel 'Ids' xlabel 'Vds'
+
+.ENDC
+
+.END

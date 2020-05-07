@@ -1,0 +1,56 @@
+* SPICE3 file created from q5_xor.ext - technology: scmos
+*Question 5 - 2-Input CMOS XOR Gate
+*Guining Pertin - 170102027
+
+.option scale=1u
+.MODEL nfet NMOS
+.MODEL pfet PMOS
+
+*MAGIC extractions
+*Inverter 1
+M1000 A_BAR A VDD VDD pfet w=3 l=2 ad=19 pd=18 as=104 ps=96
+M1008 A_BAR A GND GND nfet w=3 l=2 ad=19 pd=18 as=95 ps=90
+
+*Inverter 2
+M1007 B_BAR B VDD VDD pfet w=3 l=2 ad=0 pd=0 as=19 ps=18
+M1015 B_BAR B GND GND nfet w=3 l=2 ad=0 pd=0 as=19 ps=18
+
+*NAND 1
+M1001 N1 A_BAR VDD VDD pfet w=3 l=2 ad=0 pd=0 as=38 ps=36
+M1002 N1 B VDD VDD pfet w=3 l=2 ad=0 pd=0 as=0 ps=0
+M1010 N1 B inter1 GND nfet w=3 l=2 ad=19 pd=18 as=0 ps=0
+M1009 inter1 A_BAR GND GND nfet w=3 l=2 ad=18 pd=18 as=0 ps=0
+
+*NAND 2
+M1005 N2 A VDD VDD pfet w=3 l=2 ad=0 pd=0 as=38 ps=36
+M1006 N2 B_BAR VDD VDD pfet w=3 l=2 ad=0 pd=0 as=0 ps=0
+M1013 N2 A inter2 GND nfet w=3 l=2 ad=18 pd=18 as=19 ps=18
+M1014 inter2 B_BAR GND GND nfet w=3 l=2 ad=0 pd=0 as=0 ps=0
+
+*NAND 3
+M1003 OUT N1 VDD VDD pfet w=3 l=2 ad=0 pd=0 as=19 ps=18
+M1004 OUT N2 VDD VDD pfet w=3 l=2 ad=19 pd=18 as=0 ps=0
+M1012 OUT N2 inter3 GND nfet w=3 l=2 ad=19 pd=18 as=0 ps=0
+M1011 inter3 N1 GND GND nfet w=3 l=2 ad=18 pd=18 as=0 ps=0
+
+*Parasitics
+C0 OUT VDD 5.9fF
+C1 N1 VDD 9.3fF
+C2 N2 VDD 9.3fF
+C3 N2 GND 4.7fF
+C4 N1 GND 4.7fF
+C5 VDD GND 15.8fF
+
+*Voltage Sources
+VD VDD GND DC 5
+VA A GND DC 0 AC 0 PULSE(0 5 2 0 0 2 4)
+VB B GND DC 0 AC 0 PULSE(0 5 1 0 0 1 2)
+
+.CONTROL
+
+TRAN 10m 4
+PLOT OUT ylabel 'Output(0110)'
+
+.ENDC
+
+.END

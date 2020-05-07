@@ -1,0 +1,27 @@
+magic
+tech scmos
+timestamp 1567607326
+<< polysilicon >>
+rect -2 2 1 7
+rect -2 -4 1 -2
+<< ndiffusion >>
+rect -4 -2 -2 2
+rect 1 -2 3 2
+<< metal1 >>
+rect 1 7 5 10
+rect -7 2 -4 4
+rect -7 -4 -4 -2
+rect 3 2 6 4
+rect 3 -4 6 -2
+<< ntransistor >>
+rect -2 -2 1 2
+<< polycontact >>
+rect -3 7 1 11
+<< ndcontact >>
+rect -8 -2 -4 2
+rect 3 -2 7 2
+<< labels >>
+rlabel metal1 4 8 4 8 5 GATE
+rlabel metal1 5 -3 5 -3 1 DRAIN
+rlabel metal1 -6 -3 -6 -3 2 GND
+<< end >>

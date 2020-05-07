@@ -1,0 +1,23 @@
+* SPICE3 file created from q3_pmos.ext - technology: scmos
+*Question 3 - PMOS
+*Guining Pertin - 170102027
+
+.option scale=1u
+.MODEL pfet PMOS
+
+*MAGIC extractions
+M1000 GND GATE VDD VDD pfet w=3 l=2 ad=19 pd=18 as=19 ps=18
+C0 VDD GND 6.5fF
+
+*Voltage Sources
+VDS GND VDD DC 0
+VGS GATE VDD DC 0
+
+.CONTROL
+
+DC VDS -5 0 .1 VGS -5 0 0.5
+PLOT -VDS#branch ylabel 'Ids' xlabel 'Vds'
+
+.ENDC
+
+.END

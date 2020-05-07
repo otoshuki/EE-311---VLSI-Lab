@@ -1,0 +1,22 @@
+magic
+tech scmos
+timestamp 1569316278
+<< nwell >>
+rect -3 -4 9 10
+<< pdiffusion >>
+rect -1 8 7 9
+rect -1 4 1 8
+rect 5 4 7 8
+<< metal1 >>
+rect -7 11 13 16
+rect 1 8 5 11
+rect 1 -8 5 -4
+rect -7 -13 13 -8
+<< pdcontact >>
+rect 1 4 5 8
+<< nsubstratencontact >>
+rect 1 -4 5 0
+<< labels >>
+rlabel metal1 3 -10 3 -10 1 n
+rlabel metal1 3 13 3 13 5 p
+<< end >>
