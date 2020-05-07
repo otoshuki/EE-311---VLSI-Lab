@@ -1,0 +1,19 @@
+1. .sp files - 1st line - Title
+2. Netlists ends with .end
+3. .op or op command to determine operating point of the circuit
+4. print <node> to print the voltage at node
+5. Netlist files can be saved as .cir file and then sourced(ngspice in linux)
+6. Netlist - a description of the connectivity of a circuit
+7. dc 0 - sets the operating point
+8. ac 1 - setting V1 - getting ratio of out/1
+9. .ac dec 10 1 100k - 10 points per decade from 1 to 100k Hz
+10. plot - plots real part
+11. plot vdb(out) for dB and plot ph(out) for phase
+12. Assemble these interactive commands into .control - .endc section
+13. plot out xlimit 1 100k ylabel 'gain'
+14. let outd = 180/PI*cph(out) - create variable outd, cph(out) - phase in rad
+15. ac and not .ac if inside control
+16. settype decibel out - displays in the plot
+17. + - to add next line to previous line
+18. .include LF356.MOD - adds LF356 model to netlist
+19. dc Vin -50m 50m 2m - for DC simulation

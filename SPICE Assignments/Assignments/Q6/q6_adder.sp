@@ -1,0 +1,125 @@
+Question 6 - 8-Bit Binary Adder
+*Guining Pertin - 170102027
+
+*Default parameters
+.MODEL PMOS1 PMOS
+.MODEL NMOS1 NMOS
+
+*CMOS NOT Gate
+.SUBCKT NOT VDD GND IN OUT
+M1 OUT IN GND GND NMOS1
+M2 OUT IN VDD VDD PMOS1
+.ENDS NOT
+
+*CMOS NAND Gate
+.SUBCKT NAND VDD GND A B OUT
+M1 OUT A 1 1 NMOS1
+M2 1 B GND GND NMOS1
+M3 OUT A VDD VDD PMOS1
+M4 OUT B VDD VDD PMOS1
+.ENDS NAND
+
+*CMOS XOR Gate
+.SUBCKT XOR VDD GND A B OUT
+X1 VDD GND A AP NOT
+X2 VDD GND B BP NOT
+X3 VDD GND AP B N1 NAND
+X4 VDD GND A BP N2 NAND
+X5 VDD GND N1 N2 OUT NAND
+.ENDS XOR
+
+*1-BIT BINARY ADDER
+.SUBCKT ONEBIT VDD GND A B CIN SUM COUT
+X1 VDD GND A B XOR1 XOR
+X2 VDD GND XOR1 CIN SUM XOR
+X3 VDD GND A B N1 NAND
+X4 VDD GND CIN XOR1 N2 NAND
+X5 VDD GND N1 N2 COUT NAND
+.ENDS ONEBIT
+
+*8-BIT BINARY ADDER
+V1 VDD GND DC 5
+X0 VDD GND A0 B0 GND S0 C0 ONEBIT
+X1 VDD GND A1 B1 C0 S1 C1 ONEBIT
+X2 VDD GND A2 B2 C1 S2 C2 ONEBIT
+X3 VDD GND A3 B3 C2 S3 C3 ONEBIT
+X4 VDD GND A4 B4 C3 S4 C4 ONEBIT
+X5 VDD GND A5 B5 C4 S5 C5 ONEBIT
+X6 VDD GND A6 B6 C5 S6 C6 ONEBIT
+X7 VDD GND A7 B7 C6 S7 COUT ONEBIT
+
+*TEST INPUT
+*01100111 + 11001100 = 00110100, Cout = 1
+*1st Number
+VA0 A0 GND DC 5
+VA1 A1 GND DC 5
+VA2 A2 GND DC 5
+VA3 A3 GND DC 0
+VA4 A4 GND DC 0
+VA5 A5 GND DC 5
+VA6 A6 GND DC 5
+VA7 A7 GND DC 0
+*2nd Number
+VB0 B0 GND DC 5
+VB1 B1 GND DC 0
+VB2 B2 GND DC 5
+VB3 B3 GND DC 5
+VB4 B4 GND DC 0
+VB5 B5 GND DC 0
+VB6 B6 GND DC 5
+VB7 B7 GND DC 5
+
+.control
+
+op
+
+*Printing Output-starting from LSB
+if S0 < 1
+  print '0'
+else
+  print '1'
+endif
+if S1 < 1
+  print '0'
+else
+  print '1'
+endif
+if S2 < 1
+  print '0'
+else
+  print '1'
+endif
+if S3 < 1
+  print '0'
+else
+  print '1'
+endif
+if S4 < 1
+  print '0'
+else
+  print '1'
+endif
+if S5 < 1
+  print '0'
+else
+  print '1'
+endif
+if S6 < 1
+  print '0'
+else
+  print '1'
+endif
+if S7 < 1
+  print '0'
+else
+  print '1'
+endif
+if COUT < 1
+  print '0'
+else
+  print '1'
+endif
+
+.endc
+
+.end
